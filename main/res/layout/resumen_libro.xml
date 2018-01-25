@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Titulo"
+        android:textStyle="bold"
+        android:textSize="26sp" />
+
+    <ImageView
+        android:id="@+id/imageButton_caratula"
+        android:layout_width="200dip"
+        android:layout_height="250dip"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView_titulo"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="11dp"
+        app:srcCompat="@drawable/ic_menu_camera"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="11dp" />
+
+    <TextView
+        android:id="@+id/textViewEnlace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageButton_caratula"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/imageButton_caratula"
+        android:text="Enlace"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="2dp"
+        android:layout_toRightOf="@+id/imageButton_caratula" />
+
+    <TextView
+        android:id="@+id/textViewAutor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewEnlace"
+        android:layout_below="@+id/textViewEnlace"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:textSize="22dp"
+        android:textColor="@color/colorAccent"
+        android:text="Autor"
+        android:layout_alignLeft="@+id/textViewEnlace" />
+
+    <TextView
+        android:id="@+id/textViewYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewAutor"
+        android:layout_below="@+id/textViewAutor"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Año"
+        android:layout_alignLeft="@+id/textViewAutor" />
+
+    <TextView
+        android:id="@+id/textViewResumen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textViewYear"
+        android:layout_below="@+id/textViewYear"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Resumen"
+        android:layout_alignLeft="@+id/textViewYear" />
+
+    <TextView
+        android:id="@+id/textViewEspacio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView_titulo"
+        android:layout_below="@+id/imageButton_caratula"
+        android:layout_marginTop="11dp"
+        android:layout_alignLeft="@+id/textView_titulo" />
+
+    <Button
+        android:id="@+id/btn_descargar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/textViewResumen"
+        android:layout_alignRight="@+id/textViewResumen"
+        android:layout_below="@+id/textViewEspacio"
+        android:layout_marginEnd="121dp"
+        android:layout_marginRight="121dp"
+        android:layout_marginTop="14dp"
+        android:text="Descargar" />
+</RelativeLayout>

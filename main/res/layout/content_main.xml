@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.javi.pell.buscadorlibros.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:text="Escriba el titulo o palabra del titulo a buscar o deje en blanco para ver novedades y pulse uno de los botones para diferentes resultados"
+        android:textAlignment="center"
+        android:textColor="?attr/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editText_palabra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.13" />
+
+    <EditText
+        android:id="@+id/editText_palabra"
+        android:layout_width="256dp"
+        android:layout_height="45sp"
+        android:layout_marginBottom="336dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Titulo a buscar..."
+        android:inputType="text|textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/button_buscar"
+        android:layout_width="47dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="144dp"
+        android:layout_marginStart="16dp"
+        android:textSize="8sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- fuente : https://stackoverflow.com/questions/6533942/adding-gif-image-in-an-imageview-in-android -->
+    <pl.droidsonroids.gif.GifTextView
+        android:id="@+id/buscando"
+        android:layout_width="64sp"
+        android:layout_height="64sp"
+        android:layout_marginBottom="119dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/buscando"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_palabra" />
+
+    <Button
+        android:id="@+id/btnBorrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Borrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGratisMas" />
+
+    <Button
+        android:id="@+id/btnGratisMas"
+        style="@android:style/Widget.DeviceDefault.Light.Button"
+        android:layout_width="170dp"
+        android:layout_height="70sp"
+        android:layout_marginBottom="244dp"
+        android:layout_marginStart="8dp"
+        android:elevation="@dimen/cardview_default_elevation"
+        android:text="Buscar en GratisMas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_palabra" />
+
+    <Button
+        android:id="@+id/btnLectulanda"
+        style="@android:style/Widget.DeviceDefault.Light.Button"
+        android:layout_width="166dp"
+        android:layout_height="70sp"
+        android:layout_marginBottom="256dp"
+        android:layout_marginEnd="8dp"
+        android:text="Buscar en Lectulanda"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_palabra" />
+
+</android.support.constraint.ConstraintLayout>

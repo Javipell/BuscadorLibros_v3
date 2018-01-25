@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Direcciones de Correo">
+        <EditTextPreference
+            android:key="correo_destinatario"
+            android:title="Destinatario de correo"
+            android:summary="Correo de la persona que va a recibir el correo"
+            android:defaultValue="javipell@gmail.com">
+        </EditTextPreference>
+        <EditTextPreference
+            android:key="remitente_correo"
+            android:title="Remitente del correo"
+            android:summary="Correo de la persona que envia el correo"
+            android:defaultValue="robetorre@gmail.com">
+        </EditTextPreference>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Datos Usuario">
+        <EditTextPreference
+            android:key="nombre_usuario"
+            android:title="Nombre Usuario"
+            android:summary="Guarda el nombre del usuario"
+            android:defaultValue=" " >
+        </EditTextPreference>
+
+        <EditTextPreference
+            android:key="contraseña_usuario"
+            android:title="Contraseña usuario"
+            android:summary="Guarda la contraseña del usuario"
+            android:defaultValue=" ">
+        </EditTextPreference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Forma de obtener resultados">
+        <CheckBoxPreference
+            android:key="resultado_correo"
+            android:title="Enviar resultado por correo"
+            android:summary="El resultado se solicitara por email"
+            android:defaultValue="true" >
+        </CheckBoxPreference>
+        <ListPreference
+            android:key="lista_resultados"
+            android:title="Metodo obetener resultados"
+            android:summary="Seleccion por lista"
+            android:entries="@array/resultados"
+            android:entryValues="@array/resultados_valores">
+
+        </ListPreference>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Buscador">
+        <ListPreference
+            android:key="lista_buscadores"
+            android:title="Seleccione un buscador"
+            android:entries="@array/buscadores"
+            android:entryValues="@array/buscadores_valores"
+            android:defaultValue="0" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
