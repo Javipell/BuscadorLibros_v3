@@ -1,15 +1,29 @@
 package com.javi.pell.buscadorlibros;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class About extends AppCompatActivity {
+public class About extends AppCompatActivity implements View.OnClickListener {
 
     // fuente : https://www.youtube.com/watch?v=BTYuLho5_rE
     /*
@@ -63,9 +77,43 @@ public class About extends AppCompatActivity {
         TextView tv_github = findViewById(R.id.tv_github);
         tv_github.setText("https://github.com/Javipell");
 
+        ImageView imageView, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7;
+        imageView = findViewById(R.id.imageView);
+        imageView.setOnClickListener(this);
+        imageView2 = findViewById(R.id.imageView2);
+        imageView2.setOnClickListener(this);
+        imageView3 = findViewById(R.id.imageView3);
+        imageView3.setOnClickListener(this);
+        imageView4 = findViewById(R.id.imageView4);
+        imageView4.setOnClickListener(this);
+        imageView5 = findViewById(R.id.imageView5);
+        imageView5.setOnClickListener(this);
+        imageView6 = findViewById(R.id.imageView6);
+        imageView6.setOnClickListener(this);
+        imageView7 = findViewById(R.id.imageView7);
+        imageView7.setOnClickListener(this);
+
         TextView tv_texto = findViewById(R.id.tv_texto);
         String cadena =" ";
-
         tv_texto.setText(cadena);
     }
+
+    @Override
+    public void onClick(View view) {
+        System.out.println("indice "+ view.getId());
+        switch (view.getId())
+        {
+            case R.id.imageView:
+
+                break;
+            case R.id.imageView2:
+                //Toast.makeText(getApplicationContext(), "imagen 2" , Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        Uri uri = Uri.parse("http://dgjavipell.blogspot.com.es/");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
 }

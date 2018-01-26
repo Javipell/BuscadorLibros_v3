@@ -94,6 +94,7 @@
                 <include layout="@layout/layout_telefono" />
                 <include layout="@layout/layout_aficiones" />
 
+
                 <TextView
                     android:id="@+id/tv_texto"
                     android:padding="12dp"
