@@ -95,7 +95,7 @@ public class VerLibro extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(tmpTitulo);
-        if (getSupportActionBar() != null)  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //if (getSupportActionBar() != null)  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ScrapingLibro scrapingLibro = new ScrapingLibro(url, VerLibro.this, buscadorUrl);
 

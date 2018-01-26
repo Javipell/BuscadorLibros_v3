@@ -49,7 +49,8 @@
             android:title="Metodo obetener resultados"
             android:summary="Seleccion por lista"
             android:entries="@array/resultados"
-            android:entryValues="@array/resultados_valores">
+            android:entryValues="@array/resultados_valores"
+            android:defaultValue="0">
 
         </ListPreference>
     </PreferenceCategory>
