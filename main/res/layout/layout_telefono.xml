@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="12dp"    >
+    <!---->
+    <ImageView
+        android:src="@drawable/ic_telefono"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_telefono"
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="12dp"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryText"
+        android:text="@string/publish_date"
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:src="@drawable/whatsapp"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="50dp" />
+    <TextView
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="12dp"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryText"
+        android:text="Whatsapp "
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:src="@drawable/telegram"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:layout_gravity="center_vertical"
+        android:paddingLeft="12dp"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryText"
+        android:text="Telegram "
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content" />
+</LinearLayout>

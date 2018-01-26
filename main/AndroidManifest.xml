@@ -29,7 +29,8 @@
             android:name=".VerLibro"
             android:label="@string/title_activity_ver_libro"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".PreferenciasActivity"></activity>
+        <activity android:name=".PreferenciasActivity" />
+        <activity android:name=".About"></activity>
     </application>
 
 </manifest>

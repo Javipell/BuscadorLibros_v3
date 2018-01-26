@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">BuscadorLibros</string>
+    <string name="recent_news">Javier Pellicena Polo</string>
+    <string name="in_news">resumen</string>
+    <string name="publish_date">contacto</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
