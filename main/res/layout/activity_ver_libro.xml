@@ -21,6 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <!--
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,6 +35,9 @@
             <include layout="@layout/content_ver_libro" />
         </LinearLayout>
     </ScrollView>
+    -->
+
+    <include layout="@layout/resumen_libro" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

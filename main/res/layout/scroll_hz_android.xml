@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:orientation="horizontal">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_android1"
+                    android:layout_width="350dp"
+                    android:layout_height="200dp"
+                    app:srcCompat="@drawable/android1" />
+
+                <ImageView
+                    android:id="@+id/iv_android2"
+                    android:padding="10dp"
+                    android:layout_width="350dp"
+                    android:layout_height="200dp"
+                    app:srcCompat="@drawable/android2" />
+                <ImageView
+                    android:id="@+id/iv_android3"
+                    android:padding="10dp"
+                    android:layout_width="350dp"
+                    android:layout_height="200dp"
+                    app:srcCompat="@drawable/android3" />
+                <ImageView
+                    android:id="@+id/iv_android4"
+                    android:padding="10dp"
+                    android:layout_width="350dp"
+                    android:layout_height="200dp"
+                    app:srcCompat="@drawable/android4" />
+                <ImageView
+                    android:id="@+id/iv_android5"
+                    android:padding="10dp"
+                    android:layout_width="350dp"
+                    android:layout_height="200dp"
+                    app:srcCompat="@drawable/android5" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

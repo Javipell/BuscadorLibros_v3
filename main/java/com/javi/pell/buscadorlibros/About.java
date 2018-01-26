@@ -93,6 +93,18 @@ public class About extends AppCompatActivity implements View.OnClickListener {
         imageView7 = findViewById(R.id.imageView7);
         imageView7.setOnClickListener(this);
 
+        ImageView iv_android1, iv_android2, iv_android3, iv_android4, iv_android5;
+        iv_android1 = findViewById(R.id. iv_android1);
+        iv_android1.setOnClickListener(this);
+        iv_android2 = findViewById(R.id. iv_android2);
+        iv_android2.setOnClickListener(this);
+        iv_android3 = findViewById(R.id. iv_android3);
+        iv_android3.setOnClickListener(this);
+        iv_android4 = findViewById(R.id. iv_android4);
+        iv_android4.setOnClickListener(this);
+        iv_android5 = findViewById(R.id. iv_android5);
+        iv_android5.setOnClickListener(this);
+
         TextView tv_texto = findViewById(R.id.tv_texto);
         String cadena =" ";
         tv_texto.setText(cadena);
@@ -104,14 +116,56 @@ public class About extends AppCompatActivity implements View.OnClickListener {
         switch (view.getId())
         {
             case R.id.imageView:
-
+                webDiseño();
                 break;
             case R.id.imageView2:
-                //Toast.makeText(getApplicationContext(), "imagen 2" , Toast.LENGTH_SHORT).show();
+                webDiseño();
+                break;
+            case R.id.imageView3:
+                webDiseño();
+                break;
+            case R.id.imageView4:
+                webDiseño();
+                break;
+            case R.id.imageView5:
+                webDiseño();
+                break;
+            case R.id.imageView6:
+                webDiseño();
+                break;
+            case R.id.imageView7:
+                webDiseño();
+                break;
+            case R.id.iv_android1:
+                webGitHub();
+                break;
+            case R.id.iv_android2:
+                webGitHub();
+                break;
+            case R.id.iv_android3:
+                webGitHub();
+                break;
+            case R.id.iv_android4:
+                webGitHub();
+                break;
+            case R.id.iv_android5:
+                webGitHub();
                 break;
         }
 
+
+    }
+
+    public void webDiseño()
+    {
         Uri uri = Uri.parse("http://dgjavipell.blogspot.com.es/");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
+    public void webGitHub()
+    {
+        Uri uri = Uri.parse("http://github.com/Javipell");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }

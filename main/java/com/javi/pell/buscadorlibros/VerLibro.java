@@ -13,7 +13,9 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
@@ -69,10 +71,10 @@ public class VerLibro extends AppCompatActivity {
 
         textView_titulo = (TextView) findViewById(R.id.textView_titulo);
         textViewAutor = (TextView) findViewById(R.id.textViewAutor);
-        textViewYear = (TextView) findViewById(R.id.textViewYear);
+        //textViewYear = (TextView) findViewById(R.id.textViewYear);
         textViewResumen = (TextView) findViewById(R.id.textViewResumen);
         textViewResumen0 = (TextView) findViewById(R.id.textViewResumen0);
-        textViewEnlace = (TextView) findViewById(R.id.textViewEnlace);
+        //textViewEnlace = (TextView) findViewById(R.id.textViewEnlace);
         imgToolbar = (ImageView) findViewById(R.id.imgToolbar);
         imageButton_caratula = (ImageView) findViewById(R.id.imageButton_caratula);
 
@@ -90,9 +92,10 @@ public class VerLibro extends AppCompatActivity {
         }
 
         //App bar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.appbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(tmpTitulo);
+        if (getSupportActionBar() != null)  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ScrapingLibro scrapingLibro = new ScrapingLibro(url, VerLibro.this, buscadorUrl);
 
@@ -138,7 +141,7 @@ public class VerLibro extends AppCompatActivity {
 
                 SharedPreferences otraspreferencias = PreferenceManager
                         .getDefaultSharedPreferences(VerLibro.this);
-                valor = otraspreferencias.getString("lista_resultados"," ");
+                valor = otraspreferencias.getString("lista_resultados","0");
                 String remitente = otraspreferencias.getString("remitente_correo", " ");
                 String destinatario = otraspreferencias.getString("correo_destinatario", " ");
 
@@ -182,6 +185,7 @@ public class VerLibro extends AppCompatActivity {
             }
         });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

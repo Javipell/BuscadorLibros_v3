@@ -58,19 +58,19 @@ public class Adaptador extends BaseAdapter {
         vista = inflate.inflate(R.layout.resumen_libro, null);
         TextView textView_titulo = vista.findViewById(R.id.textView_titulo);
         ImageView imageButton_caratula = vista.findViewById(R.id.imageButton_caratula);
-        TextView textViewEnlace = vista.findViewById(R.id.textViewEnlace);
+        //TextView textViewEnlace = vista.findViewById(R.id.textViewEnlace);
         TextView textViewAutor = vista.findViewById(R.id.textViewAutor);
-        TextView textViewYear = vista.findViewById(R.id.textViewYear);
+        //TextView textViewYear = vista.findViewById(R.id.textViewYear);
         TextView textViewResumen = vista.findViewById(R.id.textViewResumen);
 
         textView_titulo.setText(ListaDatos.get(posicion).get_titulo());
-        textViewEnlace.setText(ListaDatos.get(posicion).get_url());
+        //textViewEnlace.setText(ListaDatos.get(posicion).get_url());
         textViewAutor.setText(ListaDatos.get(posicion).get_autor());
-        if (ListaDatos.get(posicion).get_year()!=0) {
+        /*if (ListaDatos.get(posicion).get_year()!=0) {
             textViewYear.setText(String.valueOf(ListaDatos.get(posicion).get_year()));
         }else{
             textViewYear.setText("");
-        }
+        }*/
         textViewResumen.setText(ListaDatos.get(posicion).get_resumen());
         String url = ListaDatos.get(posicion).get_imagen();
 

@@ -1,99 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".About">
 
-    <TextView
-        android:id="@+id/textView_titulo"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:text="Titulo"
-        android:textStyle="bold"
-        android:textSize="26sp" />
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true"
+        >
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleTextAppearance="@android:color/transparent"
+            android:fitsSystemWindows="true">
+            <ImageView
+                android:id="@+id/imgToolbar"
+                app:layout_collapseMode="parallax"
+                android:src="@drawable/artista_g"
+                android:contentDescription="Proyecto Buscador de libros"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="350dp" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:titleTextColor="@color/colorPrimaryText"
+                app:layout_collapseMode="pin" />
 
-    <ImageView
-        android:id="@+id/imageButton_caratula"
-        android:layout_width="200dip"
-        android:layout_height="250dip"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView_titulo"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="11dp"
-        app:srcCompat="@drawable/ic_menu_camera"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="11dp" />
+        </android.support.design.widget.CollapsingToolbarLayout>
 
-    <TextView
-        android:id="@+id/textViewEnlace"
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageButton_caratula"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginStart="11dp"
-        android:layout_toEndOf="@+id/imageButton_caratula"
-        android:text="Enlace"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="2dp"
-        android:layout_toRightOf="@+id/imageButton_caratula" />
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:elevation="5dp"
+            app:cardUseCompatPadding="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textView_titulo"
+                    android:padding="12dp"
+                    android:textSize="20dp"
+                    android:layout_marginTop="12dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimaryText"
+                    android:text="@string/recent_news"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:padding="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <!---->
+                    <ImageView
+                        android:contentDescription="Proyecto Buscador de libros"
+                        android:src="@drawable/ic_tintero"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/textViewAutor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textViewEnlace"
-        android:layout_below="@+id/textViewEnlace"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:textSize="22dp"
-        android:textColor="@color/colorAccent"
-        android:text="Autor"
-        android:layout_alignLeft="@+id/textViewEnlace" />
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/textViewAutor"
+                        android:padding="8dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryText"
+                        android:text="@string/publish_date"
+                        android:layout_width="0dp"
+                        android:layout_weight="9"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewYear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textViewAutor"
-        android:layout_below="@+id/textViewAutor"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:text="Año"
-        android:layout_alignLeft="@+id/textViewAutor" />
+                <!-- caratula pequeña y datos-->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:padding="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <!---->
+                    <ImageView
+                        android:id="@+id/imageButton_caratula"
+                        android:contentDescription="Proyecto Buscador de libros"
+                        android:src="@drawable/tintero"
+                        android:layout_weight="8"
+                        android:layout_width="0dp"
+                        android:layout_height="250dp" />
 
-    <TextView
-        android:id="@+id/textViewResumen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textViewYear"
-        android:layout_below="@+id/textViewYear"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:text="Resumen"
-        android:layout_alignLeft="@+id/textViewYear" />
+                    <TextView
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/textViewResumen0"
+                        android:padding="8dp"
+                        android:textSize="14dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimaryText"
+                        android:text="@string/publish_date"
+                        android:layout_width="0dp"
+                        android:layout_weight="8"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewEspacio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/textView_titulo"
-        android:layout_below="@+id/imageButton_caratula"
-        android:layout_marginTop="11dp"
-        android:layout_alignLeft="@+id/textView_titulo" />
+                <TextView
+                    android:id="@+id/textViewResumen"
+                    android:padding="12dp"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:lineSpacingMultiplier="1.5"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/in_news"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_descargar"
+        </android.support.v7.widget.CardView>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:src="@drawable/ic_fav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textViewResumen"
-        android:layout_alignRight="@+id/textViewResumen"
-        android:layout_below="@+id/textViewEspacio"
-        android:layout_marginEnd="121dp"
-        android:layout_marginRight="121dp"
-        android:layout_marginTop="14dp"
-        android:text="Descargar" />
-</RelativeLayout>
+        android:elevation="6dp"
+        app:pressedTranslationZ="12dp"
+        app:layout_anchor="@id/app_bar_layout"
+        app:layout_anchorGravity="bottom|right|end" />
+
+</android.support.design.widget.CoordinatorLayout>

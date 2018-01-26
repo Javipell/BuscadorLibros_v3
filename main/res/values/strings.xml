@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BuscadorLibros</string>
+    <string name="app_name">Buscador de Libros</string>
     <string name="recent_news">Javier Pellicena Polo</string>
     <string name="in_news">resumen</string>
     <string name="publish_date">contacto</string>
@@ -8,8 +8,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_resultados_busqueda">ResultadosBusqueda</string>
-    <string name="title_activity_ver_libro">VerLibro</string>
+    <string name="title_activity_resultados_busqueda">Resultados de la Busqueda</string>
+    <string name="title_activity_ver_libro">Ver Libro</string>
 
     <string-array name="buscadores">
         <item>GratisMas</item>
