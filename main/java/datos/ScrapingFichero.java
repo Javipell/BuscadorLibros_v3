@@ -2,6 +2,7 @@ package datos;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.icu.text.SymbolTable;
@@ -61,6 +62,7 @@ public class ScrapingFichero
         buscadorCondicion = params[1];
         buscadorPagina = params[2];
         buscadorEspacio = params[3];
+        pagina = Integer.parseInt(params[4]);
         ruta = buscadorUrl;
         sufijoPaginacion = buscadorPagina;
 
@@ -69,7 +71,7 @@ public class ScrapingFichero
         inicio = System.currentTimeMillis();
         if (pruebas==0) {
             //ruta += "?s="+buscar.replace(" ", "+");
-            ruta += buscadorCondicion + buscar.replace(" ", buscadorEspacio);
+            ruta += buscadorPagina + buscadorCondicion + buscar.replace(" ", buscadorEspacio);
             ficheroOferta = "Libros_Buscados.txt";
         }else {
             //ruta += "libros/";
@@ -203,6 +205,8 @@ public class ScrapingFichero
     public String leerPagina()
     {
         String dg = "";
+        System.out.println("msg url " + buscadorUrl);
+
 
         if ( buscadorUrl.contains("gratismas") )
         {
@@ -214,7 +218,115 @@ public class ScrapingFichero
             System.out.println("msg url 3" + buscadorUrl);
             dg = leerPagina_lectulandia();
         }
+        if ( buscadorUrl.contains("librosparadescargar") )
+        {
+            System.out.println("msg url 4 " + buscadorUrl);
+            dg = leerLibrosparadescargar();
+        }
         return dg;
+    }
+
+    public String leerLibrosparadescargar()
+    {
+        documentoProcesadoAnterior="";
+        documentoAGuardar="";
+        int x=pagina;
+        String stringUrl=ruta;
+        Boolean iguales = false;
+        int elemValidos = 0;
+
+        do{
+            documentoProcesado="";
+            if (pruebas==1 && x>=1)
+            {
+                url = url.replace( String.valueOf(x-1), String.valueOf(x)) ;
+            }else{
+                url =stringUrl;
+            }
+            System.out.println("MSG url " + url + " PRUEBAS "+ pruebas);
+
+            int veces = 0;
+            int elem = 0;
+            int y= 0;
+
+            do {
+                getHtmlDocument();
+
+                if (mDocument!=null)
+                {
+                    veces=50;
+                }else{
+                    veces++;
+                    System.out.println("MSG intento ("+veces+") "+url);
+                    tareaLarga();tareaLarga();
+                }
+            }while (veces<50);
+
+
+
+            Elements paginas = mDocument.select("article.latestPost.excerpt");
+            elem = paginas.size();
+            elemValidos = elem;
+            String[] imag = new String[elem];
+            String[] titu = new String[elem];
+            String[] auto = new String[elem];
+            String[] resu = new String[elem];
+            String[] enla = new String[elem];
+            String[] cate = new String[elem];
+
+            for (Element pagina:paginas)
+            {
+                enla[y] = pagina.getElementsByTag("a").attr("href");
+                System.out.println("msg imagen lpd " + imag[y]);
+                imag[y] = pagina.getElementsByTag("img").attr("src");
+                System.out.println("msg enlace lpd " + enla[y]);
+
+                auto[y] = "desconocido";
+                cate[y] = "Libros";
+
+                Elements titulos = pagina.select("h2.title.front-view-title");
+                int z = titulos.size();
+                int zz = 0;
+                for (Element titulo:titulos)
+                {
+                    //if (zz==y) {
+                        titu[y] = titulo.getElementsByTag("a").attr("title");
+                        //break;
+                    //}
+                    //zz++;
+                }
+                Elements resumenes = pagina.getElementsByClass("front-view-content");
+                resu[y] = resumenes.text();
+
+                y++;
+
+            }
+
+            for (y = 0; y < elem; y++)
+            {
+                if (cate[y].equals("Libros"))
+                {
+                    documentoProcesado += titu[y] + " -- " + auto[y] + " -- " + enla[y] + " -- "
+                            + resu[y] + " -- " + imag[y] + "\n";
+                    System.out.println("msg libro (" + y + ") " + imag[y]);
+                    CargaImagenes nuevaTarea = new CargaImagenes();
+                    nuevaTarea.execute(imag[y]);
+                }
+            }
+
+            if (pruebas==0) iguales=true;
+
+            if(!documentoProcesado.equals(documentoProcesadoAnterior)){
+                documentoProcesadoAnterior = documentoProcesado;
+                documentoAGuardar += documentoProcesado;
+                x++;
+                if (x==2) iguales=true;
+            }else{
+                iguales=true;
+            }
+
+        }while (!iguales);
+        return documentoAGuardar;
     }
 
     /**

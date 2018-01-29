@@ -111,14 +111,13 @@
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_compartir"
         android:src="@drawable/ic_fav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="6dp"
         app:pressedTranslationZ="12dp"
         app:layout_anchor="@id/app_bar_layout"
-        app:layout_anchorGravity="bottom|right|end"
-
-        />
+        app:layout_anchorGravity="bottom|right|end"  />
 
 </android.support.design.widget.CoordinatorLayout>

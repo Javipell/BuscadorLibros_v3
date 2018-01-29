@@ -134,6 +134,7 @@ public class RecyclerViewAdaptador extends RecyclerView.Adapter<RecyclerViewAdap
 
         Bitmap bmImg = BitmapFactory.decodeFile(ruta);
         holder.foto.setImageBitmap(bmImg);
+        System.out.println("msg fotos (" + position + ") " + ruta);
 
         /*try {
             //Picasso.with(mContext).load(urlFoto).into(mImageView);

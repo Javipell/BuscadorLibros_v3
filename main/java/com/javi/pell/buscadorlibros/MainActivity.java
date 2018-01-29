@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity
 
     EditText mEditTextPalabra;
     TextView textView2;
-    Button mButtonBuscar, btnBorrar, btnGratisMas, btnLectulanda;
+    Button mButtonBuscar, btnBorrar, btnGratisMas, btnLectulanda, btnLibrosPD;
     GifTextView buscando;
     String buscadorUrl = "";
     String buscadorCondicion = "";
@@ -53,13 +53,14 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mEditTextPalabra = (EditText) findViewById(R.id.editText_palabra);
-        textView2 = (TextView) findViewById(R.id.textView2);
-        buscando = (GifTextView) findViewById(R.id.buscando);
-        mButtonBuscar = (Button) findViewById(R.id.button_buscar);
-        btnBorrar = (Button) findViewById(R.id.btnBorrar);
-        btnGratisMas = (Button) findViewById(R.id.btnGratisMas);
-        btnLectulanda = (Button) findViewById(R.id.btnLectulanda);
+        mEditTextPalabra =  findViewById(R.id.editText_palabra);
+        textView2 =  findViewById(R.id.textView2);
+        buscando =  findViewById(R.id.buscando);
+        mButtonBuscar =  findViewById(R.id.button_buscar);
+        btnBorrar =  findViewById(R.id.btnBorrar);
+        btnGratisMas =  findViewById(R.id.btnGratisMas);
+        btnLectulanda =  findViewById(R.id.btnLectulanda);
+        btnLibrosPD = findViewById(R.id.btnLibrosPD);
 
         mEditTextPalabra.setText(limpiarAcentos(mEditTextPalabra.getText().toString()));
 
@@ -87,6 +88,17 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        btnLibrosPD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences otrasPreferencias = PreferenceManager
+                        .getDefaultSharedPreferences(MainActivity.this);
+                SharedPreferences.Editor editor = otrasPreferencias.edit();
+                editor.putString("lista_buscadores", "3");
+                editor.apply();
+                mButtonBuscar.callOnClick();
+            }
+        });
         btnLectulanda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,6 +115,8 @@ public class MainActivity extends AppCompatActivity
                 mButtonBuscar.callOnClick();
         }
         });
+
+
         mButtonBuscar.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -142,6 +156,11 @@ public class MainActivity extends AppCompatActivity
                         buscadorEspacio = "%20";
                         buscadorPagina = "book/page/";
                         break;
+                    case "3":
+                        buscadorUrl = "http://librosparadescargar.net/";
+                        buscadorCondicion = "?s=";
+                        buscadorEspacio = "+";
+                        buscadorPagina = "page/";
                 }
 
 

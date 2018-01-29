@@ -2,10 +2,13 @@ package com.javi.pell.buscadorlibros;
 
 import android.content.Intent;
 import android.os.Environment;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -33,6 +36,8 @@ public class Libro extends AppCompatActivity {
     String buscadorCondicion = "";
     String buscadorPagina = "";
     String buscadorEspacio = "";
+
+    int pagina = 1;
 
     EstructuraDatos mEstructuraDatos;
     List<EstructuraDatos> mEstructuraDatosList = new ArrayList<>();
@@ -65,13 +70,29 @@ public class Libro extends AppCompatActivity {
         }
         Toast.makeText(getApplicationContext(),"Buscando...:  "+ buscar,Toast.LENGTH_SHORT).show();
 
-        mEstructuraDatosList.clear();
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.buscarMas);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Buscando más resultados", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                pagina++;
+                mEstructuraDatosList.clear();
+
+                buscar();
+
+            }
+        });
+
+        /*mEstructuraDatosList.clear();
         ScrapingFichero scrapingFichero = new ScrapingFichero(buscar,
                 Integer.parseInt(pruebas), Libro.this,
-                buscadorUrl, buscadorCondicion, buscadorPagina, buscadorEspacio);
-        leerFichero();
+                buscadorUrl, buscadorCondicion, buscadorPagina, buscadorEspacio, String.valueOf(pagina) );
+        leerFichero();*/
+        mEstructuraDatosList.clear();
+        buscar();
 
-        mRecyclerViewLibro = (RecyclerView) findViewById(R.id.recyclerLibro);
+        /*mRecyclerViewLibro = (RecyclerView) findViewById(R.id.recyclerLibro);
         // usa esta configuración para mejorar el rendimiento si sabes que los cambios
         // en el contenido no cambia el tamaño del diseño de RecyclerView
         mRecyclerViewLibro.setHasFixedSize(true);
@@ -88,10 +109,53 @@ public class Libro extends AppCompatActivity {
                 Intent intento = new Intent(getApplicationContext(), VerLibro.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("cadenaUrl", mEstructuraDatosList.get(
-                        mRecyclerViewLibro.getChildAdapterPosition(view)).get_url());
+                        mRecyclerViewLibro.getChildAdapterPosition(view)).get_url() );
                 bundle.putString("cadenaTitulo", mEstructuraDatosList.get(
-                        mRecyclerViewLibro.getChildAdapterPosition(view)).get_titulo());
+                        mRecyclerViewLibro.getChildAdapterPosition(view)).get_titulo() );
                 bundle.putString("buscadorUrl", buscadorUrl);
+                bundle.putString("buscadorImagen", mEstructuraDatosList.get(
+                        mRecyclerViewLibro.getChildAdapterPosition(view)).get_imagen() );
+                intento.putExtras(bundle);
+                startActivity(intento);
+            }
+        });
+
+        mRecyclerViewLibro.setAdapter(mAdaptadorLibro);*/
+
+
+    }
+
+    public void buscar()
+    {
+
+        ScrapingFichero scrapingFichero = new ScrapingFichero(buscar,
+                Integer.parseInt(pruebas), Libro.this,
+                buscadorUrl, buscadorCondicion, buscadorPagina, buscadorEspacio, String.valueOf(pagina) );
+        leerFichero();
+
+        mRecyclerViewLibro = (RecyclerView) findViewById(R.id.recyclerLibro);
+        // usa esta configuración para mejorar el rendimiento si sabes que los cambios
+        // en el contenido no cambia el tamaño del diseño de RecyclerView
+        mRecyclerViewLibro.setHasFixedSize(true);
+        mRecyclerViewLibro.setLayoutManager(new LinearLayoutManager(this));
+        mAdaptadorLibro = new RecyclerViewAdaptador(mEstructuraDatosList, Libro.this);
+        // evento on click
+        mAdaptadorLibro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Selecciono "
+                                + mEstructuraDatosList.get(
+                        mRecyclerViewLibro.getChildAdapterPosition(view)).get_titulo()
+                        , Toast.LENGTH_SHORT).show();
+                Intent intento = new Intent(getApplicationContext(), VerLibro.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("cadenaUrl", mEstructuraDatosList.get(
+                        mRecyclerViewLibro.getChildAdapterPosition(view)).get_url() );
+                bundle.putString("cadenaTitulo", mEstructuraDatosList.get(
+                        mRecyclerViewLibro.getChildAdapterPosition(view)).get_titulo() );
+                bundle.putString("buscadorUrl", buscadorUrl);
+                bundle.putString("buscadorImagen", mEstructuraDatosList.get(
+                        mRecyclerViewLibro.getChildAdapterPosition(view)).get_imagen() );
                 intento.putExtras(bundle);
                 startActivity(intento);
             }

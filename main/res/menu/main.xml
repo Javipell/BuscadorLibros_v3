@@ -3,12 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:orderInCategory="200"
         android:title="@string/action_settings"
         app:showAsAction="never" />
     <item
+        android:id="@+id/action_compartir"
+        android:orderInCategory="300"
+        android:title="Compartir"
+        app:actionProviderClass="android.support.v7.widget.ShareActionProvider"/>
+
+
+    <item
         android:id="@+id/action_share"
-        android:orderInCategory="200"
+        android:orderInCategory="100"
         android:title="Compartir"
         app:showAsAction="ifRoom"
         app:actionProviderClass="android.support.v7.widget.ShareActionProvider" />

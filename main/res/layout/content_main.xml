@@ -17,7 +17,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
         android:text="Escriba el titulo o palabra del titulo a buscar o deje en blanco para ver novedades y pulse uno de los botones para diferentes resultados"
@@ -52,7 +52,7 @@
         android:id="@+id/button_buscar"
         android:layout_width="47dp"
         android:layout_height="39dp"
-        android:layout_marginBottom="144dp"
+        android:layout_marginBottom="252dp"
         android:layout_marginStart="16dp"
         android:textSize="8sp"
         android:visibility="invisible"
@@ -85,31 +85,47 @@
         android:text="Borrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGratisMas" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLibrosPD" />
 
     <Button
         android:id="@+id/btnGratisMas"
         style="@android:style/Widget.DeviceDefault.Light.Button"
-        android:layout_width="170dp"
-        android:layout_height="70sp"
-        android:layout_marginBottom="244dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
         android:elevation="@dimen/cardview_default_elevation"
-        android:text="Buscar en GratisMas"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="en GratisMas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText_palabra" />
 
     <Button
         android:id="@+id/btnLectulanda"
         style="@android:style/Widget.DeviceDefault.Light.Button"
-        android:layout_width="166dp"
-        android:layout_height="70sp"
-        android:layout_marginBottom="256dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
         android:text="Buscar en Lectulanda"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_palabra"
+        tools:text="en Lectulanda" />
+
+    <Button
+        android:id="@+id/btnLibrosPD"
+        style="@android:style/Widget.DeviceDefault.Light.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="LibrosParaDescargar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_palabra" />
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLectulanda"
+        app:layout_constraintVertical_bias="0.048" />
 
 </android.support.constraint.ConstraintLayout>

@@ -23,6 +23,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +44,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import datos.ScrapingLibro;
 
-public class VerLibro extends AppCompatActivity {
+public class VerLibro extends AppCompatActivity implements View.OnClickListener {
 
     // fuente : http://www.sgoliver.net/blog/animaciones-basicas-coordinatorlayout/
     // codigo : https://github.com/sgolivernet/curso-android-src-as/blob/master/android-coordinatorlayout/app/src/main/res/layout/listitem_titular.xml
@@ -51,6 +53,7 @@ public class VerLibro extends AppCompatActivity {
     String tmpTitulo;
     String tmpAutor;
     String tmpImagen;
+    String tmpImagenAnterior;
     String tmpResumen;
     String tmpResumen1;
     String tmpResumen2;
@@ -62,7 +65,10 @@ public class VerLibro extends AppCompatActivity {
     TextView textView_titulo, textViewAutor, textViewYear, textViewResumen, textViewResumen0, textViewEnlace;
     ImageView imageButton_caratula, imgToolbar;
 
+
     ShareActionProvider mShareActionProvider;
+
+    FloatingActionButton btn_compartir, fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +82,9 @@ public class VerLibro extends AppCompatActivity {
         textViewResumen0 = (TextView) findViewById(R.id.textViewResumen0);
         //textViewEnlace = (TextView) findViewById(R.id.textViewEnlace);
         imgToolbar = (ImageView) findViewById(R.id.imgToolbar);
+
         imageButton_caratula = (ImageView) findViewById(R.id.imageButton_caratula);
+        imageButton_caratula.setOnClickListener(this);
 
         Intent intento = getIntent();
         Bundle bundle = intento.getExtras();
@@ -86,6 +94,7 @@ public class VerLibro extends AppCompatActivity {
             url = bundle.getString("cadenaUrl");
             tmpTitulo = bundle.getString("cadenaTitulo");
             buscadorUrl = bundle.getString("buscadorUrl");
+            tmpImagenAnterior = bundle.getString("buscadorImagen");
             System.out.println("msg verlibro titulo " + tmpTitulo);
             System.out.println("msg verlibro url " + url);
             System.out.println("msg verlibro buscadorUrl " + buscadorUrl);
@@ -109,6 +118,9 @@ public class VerLibro extends AppCompatActivity {
         textViewResumen.setText( tmpResumen2);
         textViewResumen0.setText( tmpResumen1);
 
+        if (tmpImagen.contains("no encontro datos") )
+            tmpImagen = (tmpImagenAnterior != null) ? tmpImagenAnterior : "";
+
         Picasso.with(VerLibro.this)
                 .load(tmpImagen)
                 .memoryPolicy(MemoryPolicy.NO_CACHE)
@@ -125,65 +137,12 @@ public class VerLibro extends AppCompatActivity {
                 .noFade()
                 .into(imgToolbar);
 
+        btn_compartir = (FloatingActionButton) findViewById(R.id.btn_compartir);
+        //btn_compartir.setOnClickListener(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(this);
 
-                String archivo = tmpTitulo;
-
-                Snackbar.make(view, "Descargando "+archivo,
-                        Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                String valor;
-
-                SharedPreferences otraspreferencias = PreferenceManager
-                        .getDefaultSharedPreferences(VerLibro.this);
-                valor = otraspreferencias.getString("lista_resultados","0");
-                String remitente = otraspreferencias.getString("remitente_correo", " ");
-                String destinatario = otraspreferencias.getString("correo_destinatario", " ");
-
-                System.out.println("msg valor "+ valor);
-
-                switch (valor)
-                {
-                    case "0":
-                        String subject = "Descargar libro";
-                        String bodyText = tmpTitulo + " -- " + tmpEnlace;
-                        String mailto = "mailto:"+ remitente  +
-                                "?cc=" + destinatario +
-                                "&subject=" + Uri.encode(subject) +
-                                "&body=" + Uri.encode(bodyText);
-
-                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-                        emailIntent.setData(Uri.parse(mailto));
-
-                        try {
-                            startActivity(emailIntent);
-                        } catch (ActivityNotFoundException e) {
-                            //TODO: Handle case where no email app is available
-                        }
-
-                        break;
-                    case "1":
-                        descargarFichero d = new descargarFichero();
-                        d.execute(tmpEnlace, archivo);
-                        break;
-                    case "2":
-                        String texto = "Descargar libro: " + tmpTitulo + " -- " + tmpEnlace;;
-                        onClickWhatsApp(texto);
-
-                        break;
-                    case "3":
-                        String numero = "657764533";
-                        String imagen = "";
-                        sendImageWhatsApp(numero, imagen);
-                        break;
-                }
-            }
-        });
     }
 
 
@@ -196,6 +155,7 @@ public class VerLibro extends AppCompatActivity {
         mShareActionProvider.setShareIntent(getDefaultShare());
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -206,9 +166,16 @@ public class VerLibro extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }else if (id == R.id.action_compartir) {
+            compartir();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void compartir()
+    {
+        mShareActionProvider.setShareIntent(getDefaultShare());
     }
 
     public Intent getDefaultShare()
@@ -294,6 +261,7 @@ public class VerLibro extends AppCompatActivity {
                 }
         }
     }
+
     private void tareaLarga()
     {
         try {
@@ -391,6 +359,85 @@ public class VerLibro extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId())
+        {
+            case R.id.btn_compartir:
+                compartir();
+                break;
+            case R.id.fab:
+                compartir2();
+            case R.id.imageButton_caratula:
+                compartir();
+                break;
+
+        }
+    }
+
+    public void compartir2()
+    {
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+
+                String archivo = tmpTitulo;
+
+                Snackbar.make(view, "Descargando "+archivo,
+                        Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                String valor;
+
+                SharedPreferences otraspreferencias = PreferenceManager
+                        .getDefaultSharedPreferences(VerLibro.this);
+                valor = otraspreferencias.getString("lista_resultados","0");
+                String remitente = otraspreferencias.getString("remitente_correo", " ");
+                String destinatario = otraspreferencias.getString("correo_destinatario", " ");
+
+                System.out.println("msg valor "+ valor);
+
+                switch (valor)
+                {
+                    case "0":
+                        String subject = "Descargar libro";
+                        String bodyText = tmpTitulo + " -- " + tmpEnlace;
+                        String mailto = "mailto:"+ remitente  +
+                                "?cc=" + destinatario +
+                                "&subject=" + Uri.encode(subject) +
+                                "&body=" + Uri.encode(bodyText);
+
+                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                        emailIntent.setData(Uri.parse(mailto));
+
+                        try {
+                            startActivity(emailIntent);
+                        } catch (ActivityNotFoundException e) {
+                            //TODO: Handle case where no email app is available
+                        }
+
+                        break;
+                    case "1":
+                        descargarFichero d = new descargarFichero();
+                        d.execute(tmpEnlace, archivo);
+                        break;
+                    case "2":
+                        compartir();
+                        break;
+                    case "3":
+                        String texto = "Descargar libro: " + tmpTitulo + " -- " + tmpEnlace;;
+                        onClickWhatsApp(texto);
+
+                        break;
+                    case "4":
+                        String numero = "657764533";
+                        String imagen = "";
+                        sendImageWhatsApp(numero, imagen);
+                        break;
+                }
+            }
+        });
+    }
 
     private class descargarFichero extends AsyncTask<String, Void, Void>
     {

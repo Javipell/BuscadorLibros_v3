@@ -89,7 +89,45 @@ public class ScrapingLibro
             System.out.println("msg url 3" + buscadorUrl);
             procesoLibro_lectulandia();
         }
+        if ( buscadorUrl.contains("librosparadescargar") )
+        {
+            System.out.println("msg url 3" + buscadorUrl);
+            procesoLibro_librosparadescargar();
+        }
 
+    }
+
+    public void procesoLibro_librosparadescargar()
+    {
+        titulo = "no encontro datos";
+        autor  = "no encontro datos";
+        urlDescarga = "no encontro datos";
+        fichaTecnica = "no encontro datos";
+        imagen = "no encontro datos";
+
+        Elements titulos = mDocument.select("h1.title.single-title.entry-title");
+        titulo = titulos.get(0).text();
+
+        Elements resumenes = mDocument.select("div.thecontent > p");
+        fichaTecnica = resumenes.get(1).text();
+        autor = resumenes.get(2).text();
+
+        Elements enlaces = mDocument.select("div.thecontent>fieldset>p>strong>a");
+        urlDescarga = enlaces.get(2).attr("href");
+
+        datosLibro = titulo + " -- " + autor + " -- " + urlDescarga + " -- " + fichaTecnica + " -- " + imagen;
+
+
+        // dar permisios de lectura escritura en androidmanifest.xml
+        File rutaArchivo = Environment.getExternalStorageDirectory();
+        rutaArchivo = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        File archivo = new File(rutaArchivo+"/"+"DatosLibro.txt");
+        if (escribirArchivo(datosLibro,archivo))
+        {
+            System.out.println("msg procesoLibro archivo guardado");
+        }else{
+            System.out.println("msg procesoLibro archivo SIN guardar");
+        }
     }
 
     public void procesoLibro_lectulandia()
@@ -105,6 +143,7 @@ public class ScrapingLibro
 
         Elements autores = mDocument.select("a.dinSource");
         autor = autores.get(0).text();
+        autor =  autor.replace("Autor - ","");
 
         Elements enlaces = mDocument.select("div#downloadContainer > a");
         urlDescarga = buscadorUrl.replace("com/","com") + enlaces.get(0).attr("href");

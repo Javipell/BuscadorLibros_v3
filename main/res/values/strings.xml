@@ -15,16 +15,19 @@
         <item>GratisMas</item>
         <item>Lectulandia</item>
         <item>EspaMobi</item>
+        <item>LibrosParaDescargar</item>
     </string-array>
     <string-array name="buscadores_valores">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
 
     <string-array name="resultados">
         <item>Enviar Correo</item>
         <item>Descargar archivo</item>
+        <item>Compartir</item>
         <item>Enviar Whatsapp 1</item>
         <item>Enviar Whatsapp 2</item>
     </string-array>
