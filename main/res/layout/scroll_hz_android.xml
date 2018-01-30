@@ -40,7 +40,7 @@
                     android:layout_width="350dp"
                     android:layout_height="200dp"
                     app:srcCompat="@drawable/android3" />
-                <ImageView
+                <!--<ImageView
                     android:id="@+id/iv_android4"
                     android:padding="10dp"
                     android:layout_width="350dp"
@@ -51,7 +51,7 @@
                     android:padding="10dp"
                     android:layout_width="350dp"
                     android:layout_height="200dp"
-                    app:srcCompat="@drawable/android5" />
+                    app:srcCompat="@drawable/android5" />-->
             </LinearLayout>
         </HorizontalScrollView>
     </LinearLayout>

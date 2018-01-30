@@ -86,24 +86,24 @@ public class About extends AppCompatActivity implements View.OnClickListener {
         imageView3.setOnClickListener(this);
         imageView4 = findViewById(R.id.imageView4);
         imageView4.setOnClickListener(this);
-        imageView5 = findViewById(R.id.imageView5);
+        /*imageView5 = findViewById(R.id.imageView5);
         imageView5.setOnClickListener(this);
         imageView6 = findViewById(R.id.imageView6);
         imageView6.setOnClickListener(this);
         imageView7 = findViewById(R.id.imageView7);
-        imageView7.setOnClickListener(this);
+        imageView7.setOnClickListener(this);*/
 
         ImageView iv_android1, iv_android2, iv_android3, iv_android4, iv_android5;
         iv_android1 = findViewById(R.id. iv_android1);
         iv_android1.setOnClickListener(this);
-        iv_android2 = findViewById(R.id. iv_android2);
+        iv_android2 = findViewById(R.id. iv_android1);
         iv_android2.setOnClickListener(this);
         iv_android3 = findViewById(R.id. iv_android3);
         iv_android3.setOnClickListener(this);
-        iv_android4 = findViewById(R.id. iv_android4);
+        /*iv_android4 = findViewById(R.id. iv_android4);
         iv_android4.setOnClickListener(this);
         iv_android5 = findViewById(R.id. iv_android5);
-        iv_android5.setOnClickListener(this);
+        iv_android5.setOnClickListener(this);*/
 
         TextView tv_texto = findViewById(R.id.tv_texto);
         String cadena =" ";
@@ -127,7 +127,7 @@ public class About extends AppCompatActivity implements View.OnClickListener {
             case R.id.imageView4:
                 webDiseño();
                 break;
-            case R.id.imageView5:
+            /*case R.id.imageView5:
                 webDiseño();
                 break;
             case R.id.imageView6:
@@ -135,7 +135,7 @@ public class About extends AppCompatActivity implements View.OnClickListener {
                 break;
             case R.id.imageView7:
                 webDiseño();
-                break;
+                break;*/
             case R.id.iv_android1:
                 webGitHub();
                 break;
@@ -145,12 +145,12 @@ public class About extends AppCompatActivity implements View.OnClickListener {
             case R.id.iv_android3:
                 webGitHub();
                 break;
-            case R.id.iv_android4:
+            /*case R.id.iv_android4:
                 webGitHub();
                 break;
             case R.id.iv_android5:
                 webGitHub();
-                break;
+                break;*/
         }
 
 

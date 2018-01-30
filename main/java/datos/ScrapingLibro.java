@@ -113,7 +113,20 @@ public class ScrapingLibro
         autor = resumenes.get(2).text();
 
         Elements enlaces = mDocument.select("div.thecontent>fieldset>p>strong>a");
-        urlDescarga = enlaces.get(2).attr("href");
+        try {
+            urlDescarga = enlaces.get(2).attr("href");
+        }catch (Exception ex)
+        {
+            Elements enlaces2 = mDocument.select("div.thecontent>p");
+            System.out.println("msg enlaces " + enlaces2);
+            fichaTecnica = resumenes.get(0).text();
+            autor = "desconocido";
+            urlDescarga = enlaces2.get(1).text();
+            urlDescarga = urlDescarga.replace("Descargar ", "");
+            urlDescarga = urlDescarga.replace("Gratis: ", "");
+            urlDescarga = urlDescarga.replace(titulo, "");
+        }
+        System.out.println("msg enlace " + urlDescarga);
 
         datosLibro = titulo + " -- " + autor + " -- " + urlDescarga + " -- " + fichaTecnica + " -- " + imagen;
 

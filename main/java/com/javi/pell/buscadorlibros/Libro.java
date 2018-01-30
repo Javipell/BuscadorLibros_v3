@@ -84,44 +84,8 @@ public class Libro extends AppCompatActivity {
             }
         });
 
-        /*mEstructuraDatosList.clear();
-        ScrapingFichero scrapingFichero = new ScrapingFichero(buscar,
-                Integer.parseInt(pruebas), Libro.this,
-                buscadorUrl, buscadorCondicion, buscadorPagina, buscadorEspacio, String.valueOf(pagina) );
-        leerFichero();*/
         mEstructuraDatosList.clear();
         buscar();
-
-        /*mRecyclerViewLibro = (RecyclerView) findViewById(R.id.recyclerLibro);
-        // usa esta configuración para mejorar el rendimiento si sabes que los cambios
-        // en el contenido no cambia el tamaño del diseño de RecyclerView
-        mRecyclerViewLibro.setHasFixedSize(true);
-        mRecyclerViewLibro.setLayoutManager(new LinearLayoutManager(this));
-        mAdaptadorLibro = new RecyclerViewAdaptador(mEstructuraDatosList, Libro.this);
-        // evento on click
-        mAdaptadorLibro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Selecciono "
-                                + mEstructuraDatosList.get(
-                                        mRecyclerViewLibro.getChildAdapterPosition(view)).get_titulo()
-                        , Toast.LENGTH_SHORT).show();
-                Intent intento = new Intent(getApplicationContext(), VerLibro.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("cadenaUrl", mEstructuraDatosList.get(
-                        mRecyclerViewLibro.getChildAdapterPosition(view)).get_url() );
-                bundle.putString("cadenaTitulo", mEstructuraDatosList.get(
-                        mRecyclerViewLibro.getChildAdapterPosition(view)).get_titulo() );
-                bundle.putString("buscadorUrl", buscadorUrl);
-                bundle.putString("buscadorImagen", mEstructuraDatosList.get(
-                        mRecyclerViewLibro.getChildAdapterPosition(view)).get_imagen() );
-                intento.putExtras(bundle);
-                startActivity(intento);
-            }
-        });
-
-        mRecyclerViewLibro.setAdapter(mAdaptadorLibro);*/
-
 
     }
 

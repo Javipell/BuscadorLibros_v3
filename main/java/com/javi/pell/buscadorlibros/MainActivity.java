@@ -131,6 +131,7 @@ public class MainActivity extends AppCompatActivity
                 btnBorrar.setVisibility(View.GONE);
                 btnGratisMas.setVisibility(View.GONE);
                 btnLectulanda.setVisibility(View.GONE);
+                btnLibrosPD.setVisibility(View.GONE);
 
                 SharedPreferences otrasPreferencias = PreferenceManager
                         .getDefaultSharedPreferences(MainActivity.this);
@@ -148,7 +149,7 @@ public class MainActivity extends AppCompatActivity
                         buscadorUrl = "https://www.lectulandia.com/";
                         buscadorCondicion = "search/";
                         buscadorEspacio = "+";
-                        buscadorPagina = "book/page/";
+                        buscadorPagina = "page/";
                         break;
                     case "2":
                         buscadorUrl = "http://espamobi.com/";
@@ -251,6 +252,7 @@ public class MainActivity extends AppCompatActivity
         btnLectulanda.setVisibility(View.VISIBLE);
         btnGratisMas.setVisibility(View.VISIBLE);
         btnBorrar.setVisibility(View.VISIBLE);
+        btnLibrosPD.setVisibility(View.VISIBLE);
     }
 
     @Override

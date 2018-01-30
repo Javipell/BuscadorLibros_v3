@@ -71,16 +71,49 @@ public class ScrapingFichero
         inicio = System.currentTimeMillis();
         if (pruebas==0) {
             //ruta += "?s="+buscar.replace(" ", "+");
-            ruta += buscadorPagina + buscadorCondicion + buscar.replace(" ", buscadorEspacio);
+            if (buscadorUrl.contains("lectulandia"))
+            {
+                //https://www.lectulandia.com/search/amor/page/2/
+                ruta += buscadorCondicion
+                        + buscar.replace(" ", buscadorEspacio) + "/" + buscadorPagina
+                        +  String.valueOf(pagina);
+            }
+            if (buscadorUrl.contains("librosparadescargar"))
+            {
+                //http://librosparadescargar.net/page/2/?s=amor
+                ruta += buscadorPagina + String.valueOf(pagina) + "/" + buscadorCondicion
+                        + buscar.replace(" ", buscadorEspacio);
+            }
+            if (buscadorUrl.contains("gratismas"))
+            {
+                //https://gratismas.org/pagina/2/?s=amor
+                ruta += buscadorPagina + String.valueOf(pagina) + "/"
+                        + buscadorCondicion + buscar.replace(" ", buscadorEspacio);
+            }
+
             ficheroOferta = "Libros_Buscados.txt";
         }else {
+            if (buscadorUrl.contains("lectulandia"))
+            {
+                //https://www.lectulandia.com/page/2/
+                ruta += "book/" + buscadorPagina +  String.valueOf(pagina);
+            }
+            if (buscadorUrl.contains("librosparadescargar"))
+            {
+                //http://librosparadescargar.net/page/2
+                ruta += buscadorPagina + String.valueOf(pagina) ;
+            }
+            if (buscadorUrl.contains("gratismas"))
+            {
+                //https://gratismas.org/libros/pagina/2/
+                ruta += buscadorPagina + String.valueOf(pagina) ;
+            }
             //ruta += "libros/";
-            ruta += buscadorPagina+ String.valueOf(pagina);
             ficheroOferta = "Libros_Nuevos.txt";
         }
 
         url = ruta;
-        System.out.println("msg url "+ url);
+        System.out.println("msg url ruta "+ url);
         System.out.println("msg buscadorUrl "+ buscadorUrl);
         System.out.println("msg buscadorCondicion "+ buscadorCondicion);
         System.out.println("msg buscadorPagina "+ buscadorPagina);

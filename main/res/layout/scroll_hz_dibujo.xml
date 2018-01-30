@@ -46,7 +46,7 @@
                     android:layout_width="350dp"
                     android:layout_height="200dp"
                     app:srcCompat="@drawable/imagen4" />
-                <ImageView
+                <!--<ImageView
                     android:id="@+id/imageView5"
                     android:padding="10dp"
                     android:layout_width="350dp"
@@ -63,7 +63,7 @@
                     android:padding="10dp"
                     android:layout_width="350dp"
                     android:layout_height="200dp"
-                    app:srcCompat="@drawable/imagen7" />
+                    app:srcCompat="@drawable/imagen7" />-->
             </LinearLayout>
         </HorizontalScrollView>
     </LinearLayout>
